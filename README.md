@@ -1,2 +1,3 @@
 # Web-Scraping
-All my apps about Web Scraping with Python
+This repository contains all my algoritms about Web Scraping
+using python. 
