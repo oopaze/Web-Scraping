@@ -43,11 +43,11 @@ class FacePrices(object):
                     self.take_prices()
 
                 else:
-                    print("Problemas ao procurar produtos. Tentando Novamente!")
+                    print("Problems to search products. Trying again!")
                     sleep(self.transition_page_time)
                     self.take_prices()
             else:
-                print("Problemas ao entrar no MarketPlace. Tentando Novamente!")
+                print("Problems to enter in MarketPlace. Trying again!")
                 sleep(self.transition_page_time)
                 self.search_prod(key)
 
