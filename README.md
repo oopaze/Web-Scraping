@@ -5,4 +5,4 @@ Selenium, Requests and bs4.
 
 FacePrices: Takes the prices in facebook's market place of a product passed 
 
-For now, enjoy this guys!
+That's it for now. Enjoy this, guys!
