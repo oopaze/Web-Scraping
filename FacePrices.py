@@ -16,10 +16,10 @@ class FacePrices(object):
         self.transition_page_time = transition_page_time
 
     def _start(self, email, pw, key):
+        """
+        This function make log in the facebook login passed and go to market place
+        """
         if email and pw:
-            """
-            This function make log in the facebook login passed and go to market place
-            """
             self.driver.get("https://www.facebook.com/")
 
             #Finding the Text box to input email and password        
@@ -30,7 +30,7 @@ class FacePrices(object):
             input_email.send_keys(email)
             input_pw.send_keys(pw)      
             
-            #Pressing enter and come in facebook
+            #Pressing enter and come in on facebook
             self.driver.find_element_by_id("u_0_b").click()
             self.login = True
             
@@ -38,16 +38,18 @@ class FacePrices(object):
             
             #Controling the loop and erros
             if self.enter_marketplace():
-                
-                if self.search_prod(key):
-                    self.take_prices()
+                key = key.split(',')
+                for prod in key:
+                    if self.search_prod(prod):
+                        self.take_prices()
 
-                else:
-                    print("Problems to search products. Trying again!")
-                    sleep(self.transition_page_time)
-                    self.take_prices()
+                    else:
+                        print("Problemas ao procurar produtos. Tentando Novamente!")
+                        sleep(self.transition_page_time)
+                        self.search_prod(prod)
+                        self.take_prices()
             else:
-                print("Problems to enter in MarketPlace. Trying again!")
+                print("Problemas ao entrar no MarketPlace. Tentando Novamente!")
                 sleep(self.transition_page_time)
                 self.search_prod(key)
 
@@ -73,8 +75,10 @@ class FacePrices(object):
         """
         Making our searching in Market Place with the key passed
         """
-        try:    
+        try:
+            print(prod)
             prod_search = self.driver.find_element_by_css_selector("#js_4 > input:nth-child(1)")
+            prod_search.clear()
             prod_search.send_keys(prod)
 
             self.driver.find_element_by_class_name("_1vi5").click()
@@ -96,8 +100,8 @@ class FacePrices(object):
             price = e.find('div', {'class':'_f3l _4x3g'}).text.split("\xa0")
             product = e.find('img', {'class':'_7ye img'})["alt"]
 
-            if price[0][0] == "G":
-                self.produtcs[product] = price[0]
+            if price[0][0] == "G" or price[0][0] == "C":
+                self.produtcs[product] = "Contatar Vendedor"
             else:
                 self.produtcs[product] = price[1]
 
@@ -131,7 +135,7 @@ try:
     a = open(arquivo, 'r')
 except FileNotFoundError:
     a = open(arquivo, 'w')
-    a.write("")
+    a.write("Product,price")
     a.close()
 
 key = input('Product: ')
