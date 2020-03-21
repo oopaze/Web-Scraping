@@ -30,7 +30,7 @@ class FacePrices(object):
             input_email.send_keys(email)
             input_pw.send_keys(pw)      
             
-            #Pressing enter and come in on facebook
+            #Pressing enter and come in facebook
             self.driver.find_element_by_id("u_0_b").click()
             self.login = True
             
