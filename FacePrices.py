@@ -6,7 +6,7 @@ from time import sleep
 
 class FacePrices(object):
     """
-    Take the price of products searched for a key passed on Facebook MarketPlace
+    Take the price of products on Facebook's MarketPlace searched for a key passed
     It needs you facebook login to make a more specified searching 
     """
     def __init__(self, driver: object, arquivo: str, transition_page_time = 10):
