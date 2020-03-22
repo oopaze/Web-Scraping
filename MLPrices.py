@@ -36,14 +36,13 @@ class MLPrices(object):
 
     def search_prod(self, key: str):
         """
-        Make a research in website for the key
+        Make a research in website by a keyword passed
         """
         input_key = self.driver.find_element_by_css_selector(".nav-search-input")
         input_key.clear()
         input_key.send_keys(key)
 
         self.driver.find_element_by_css_selector(".nav-search-btn").click()
-        return True
 
         
     def take_prices(self):
