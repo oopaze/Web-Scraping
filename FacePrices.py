@@ -129,22 +129,24 @@ class FacePrices(object):
             print(f'{prod} - {self.produtcs[prod]}\n')
         
 
-arquivo = 'data.csv'
+if __name__ == '__main__':
+    arquivo = 'data.csv'
 
-try:
-    a = open(arquivo, 'r')
-except FileNotFoundError:
-    a = open(arquivo, 'w')
-    a.write("Product,price")
-    a.close()
+    try:
+        a = open(arquivo, 'r')
+    except FileNotFoundError:
+        a = open(arquivo, 'w')
+        a.write("Product,price")
+        a.close()
 
-key = input('Product: ')
-email = input('Facebook Email: ')
-password = input('Facebook Password: ')
+    key = input('Product: ')
+    email = input('Facebook Email: ')
+    password = input('Facebook Password: ')
 
-firefox = webdriver.Firefox()
+    firefox = webdriver.Firefox()
 
 
-price_bot = FacePrices(firefox, arquivo)
-price_bot._start(email, password, key)
+    price_bot = FacePrices(firefox, arquivo)
+    price_bot._start(email, password, key)
 
+    
