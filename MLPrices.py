@@ -84,20 +84,21 @@ class MLPrices(object):
             a.write(f'{category},{elem},{price},{track}\n')
         a.close()
 
+if __name__ == '__main__':
 
-file = 'DataSets/MLdata.csv'
-try: #Creating a file if not exists
-    a = open(file, 'r')
-    a.close()
+    file = 'DataSets/MLdata.csv'
+    try: #Creating a file if not exists
+        a = open(file, 'r')
+        a.close()
 
-except FileNotFoundError:
-    a = open(file, 'w')
-    a.write("Category,Product,Price,Track\n")
-    a.close()
+    except FileNotFoundError:
+        a = open(file, 'w')
+        a.write("Category,Product,Price,Track\n")
+        a.close()
 
-key = input('Product(s): ') #can be only one product or more than it if they are separed by commom. ex.: screen, sdd
+    key = input('Product(s): ') #can be only one product or more than it if they are separed by commom. ex.: screen, sdd
 
-firefox = webdriver.Firefox() #Starting the WebDriver
+    firefox = webdriver.Firefox() #Starting the WebDriver
 
-MLBot = MLPrices(firefox, file) #Creating de MLPrices Objects
-MLBot._start(key) #Sending the key_words reference
+    MLBot = MLPrices(firefox, file) #Creating de MLPrices Objects
+    MLBot._start(key) #Sending the key_words reference
