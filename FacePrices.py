@@ -146,7 +146,5 @@ if __name__ == '__main__':
     firefox = webdriver.Firefox()
 
 
-    price_bot = FacePrices(firefox, arquivo)
-    price_bot._start(email, password, key)
-
-    
+    FBBot = FacePrices(firefox, arquivo)
+    FBBot._start(email, password, key)
